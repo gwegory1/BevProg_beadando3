@@ -22,6 +22,7 @@ void clear(){
 struct ablak : public window{
 
     GameField * a1;
+    //ez itt egy moudosiitaaas
     vector<Widget*> widgets;
 
 
