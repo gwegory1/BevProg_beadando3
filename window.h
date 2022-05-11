@@ -3,6 +3,7 @@
 #include<vector>
 #include"graphics.hpp"
 #include"widgets.hpp"
+#include "GameMaster.h"
 
 class window{;
 protected:

@@ -19,55 +19,58 @@ GameMaster::GameMaster(int a, int b){
 }
 
 void GameMaster::drawconsole(){
-for(vector<int> vec : fieldvec){
-    for(int i:vec){
-        cout << i << " | ";
+for(int i= 0; i < fieldvec.size(); i++){
+    for(int j =0;j < fieldvec[i].size();j++){
+        cout << fieldvec[j][i] << " | ";
+
     }
     cout << endl;
     }
+    cout << endl;
 }
 
 void GameMaster::addpuck(){
-    vector<int>cvec =fieldvec[fieldvec.size()/2];
-    cvec.erase(cvec.begin());
-    if(gamestate%2 == 0)cvec.insert(cvec.begin(),1);
-    else cvec.insert(cvec.begin(),2);
+        if(gamestate%2 == 0)fieldvec[3][0] = 1;
+        else fieldvec[3][0] = 2;
 }
 
 void GameMaster::movepuck_right(){
-    for(int i = 0; i < fieldvec.size(); i++){
+    for(int i = 0; i < fieldvec.size()-1; i++){
         if(fieldvec[i][0] != 0){
-            fieldvec[i].erase(fieldvec[i].begin());
-            fieldvec[i+1].erase(fieldvec[i+1].begin());
-            if(gamestate%2 == 0)fieldvec[i].insert(fieldvec[i].begin(),1);
-            else fieldvec[i+1].insert(fieldvec[i+1].begin(),2);
+            fieldvec[i][0] = 0;
+            if(gamestate%2 == 0)fieldvec[i+1][0] = 1;
+            else fieldvec[i+1][0] = 2;
+            break;
         }
     }
 }
-
-
 void GameMaster::movepuck_left(){
-for(int i = 0; i < fieldvec.size(); i++){
+    for(int i = 1; i < fieldvec.size(); i++){
         if(fieldvec[i][0] != 0){
-            fieldvec[i].erase(fieldvec[i].begin());
-            fieldvec[i-1].erase(fieldvec[i-1].begin());
-            if(gamestate%2 == 0)fieldvec[i].insert(fieldvec[i].begin(),1);
-            else fieldvec[i-1].insert(fieldvec[i-1].begin(),2);
+            fieldvec[i][0] = 0;
+            if(gamestate%2 == 0)fieldvec[i-1][0] = 1;
+            else fieldvec[i-1][0] = 2;
+            break;
         }
     }
 }
+
 
 void GameMaster::savepuck(){
 for(int i = 0; i < fieldvec.size(); i++){
         if(fieldvec[i][0] != 0){
             for(int j =0; j<fieldvec[i].size(); j++){
                 if (fieldvec[i][j] !=0 && j > 1){
-                    if(gamestate%2 == 0) fieldvec[i].insert(fieldvec[i].begin() + j-1, 1);
-                    else  fieldvec[i].insert(fieldvec[i].begin() + j-1, 1);
+                    fieldvec[i][0] =0;
+                    if(gamestate%2 == 0) fieldvec[i][j-1]=1;
+                    else  fieldvec[i][j-1]=2;
+                    break;
                 }
-                if(j < fieldvec[i].size()){
-                    if(gamestate%2 == 0) fieldvec[i].insert(fieldvec[i].begin() + j-1, 1);
-                    else  fieldvec[i].insert(fieldvec[i].begin() + j-1, 2);
+                if(j == fieldvec[i].size()-1){
+                    fieldvec[i][0] =0;
+                    if(gamestate%2 == 0) fieldvec[i][j]=1;
+                    else  fieldvec[i][j]=2;
+                    break;
                 }
             }
         }

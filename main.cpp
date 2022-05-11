@@ -28,21 +28,32 @@ struct ablak : public window{
 
     ablak(){
     a1   = new GameField(this, 100, 100, 600, 500);
-
-
-     for (Widget * w : widgets) {
-            w->draw();
-        }
-        gout << refresh;
     };
 };
 int main()
 {
     gout.open(800,800);
+    event ev;
+    GameMaster g(7,6);
+    while(gin >> ev){
+        if(ev.type == ev_key) g.drawconsole();
+        gout << refresh;
+        if(ev.keycode == 'a'){
+            g.addpuck();
+        }
+        if(ev.keycode == 'd'){
+            g.movepuck_right();
+        }
+        if(ev.keycode == 's'){
+            g.movepuck_left();
+        }
+        if(ev.keycode == 'w'){
+            g.savepuck();
+        }
+        }
     gout.load_font("LiberationSans-Regular.ttf",32,true);
     ablak a;
-    GameMaster g(7,6);
-    a.event_loop();
+    //a.event_loop();
     return 0;
 }
 
