@@ -29,6 +29,7 @@ static void clear(){
         for (Widget * w : widgets) {
             w->draw();
         }
+
         gout << refresh;
         }
 }

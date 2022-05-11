@@ -19,7 +19,8 @@ public:
     Textbox(window *w,int x, int y, int sx, int sy);
     virtual void draw() ;
     virtual void handle(genv::event ev);
-    virtual void set_value(string value, bool op);
+    virtual void set_value(int value, bool& op);
+    virtual int result();
 };
 
 

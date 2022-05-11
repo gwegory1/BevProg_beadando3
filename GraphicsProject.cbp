@@ -67,6 +67,7 @@
 		<Unit filename="GameMaster.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="LibGraphics/include/graphics.hpp" />
 		<Unit filename="NumberSelect.cpp">
 			<Option target="Debug" />
 		</Unit>

@@ -60,10 +60,22 @@ void Textbox::handle(event ev){
 }
 }
 
-void Textbox::set_value(string value, bool op){
-    if(!op)_saved += value;
-    else _saved= value;
+void Textbox::set_value(int value, bool& op){
+    if(!op)_saved += to_string(value);
+    else _saved= to_string(value);
+    if(gout.twidth(_saved)  >= _size_x){
+        _content += _saved[0];
+        _saved = _saved.substr(1, _saved.length()-1);
 }
+    if(op == true) op = false;
+}
+
+
+int Textbox::result(){
+    string res;
+    res =_content + _saved;
+    return stoi(res);
+    }
 
 
 

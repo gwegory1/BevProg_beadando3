@@ -4,6 +4,7 @@
 #include "NumberSelect.h"
 #include "DropDownMenu.h"
 #include "GameField.h"
+#include "GameMaster.h"
 #include "Button.h"
 #include <vector>
 #include <iostream>
@@ -22,7 +23,6 @@ void clear(){
 struct ablak : public window{
 
     GameField * a1;
-    //ez itt egy moudosiitaaas
     vector<Widget*> widgets;
 
 
@@ -41,6 +41,7 @@ int main()
     gout.open(800,800);
     gout.load_font("LiberationSans-Regular.ttf",32,true);
     ablak a;
+    GameMaster g(7,6);
     a.event_loop();
     return 0;
 }
