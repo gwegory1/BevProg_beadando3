@@ -5,7 +5,7 @@
 #include "DropDownMenu.h"
 #include "GameField.h"
 #include "GameMaster.h"
-#include "Button.h"
+#include "button.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -23,37 +23,43 @@ void clear(){
 struct ablak : public window{
 
     GameField * a1;
+    Button* b1;
+    Button* b2;
+    Button* b3;
+    GameMaster* g;
     vector<Widget*> widgets;
 
 
     ablak(){
-    a1   = new GameField(this, 100, 100, 600, 500);
+    g = new GameMaster(7,7);
+    a1   = new GameField(this, 100, 200, 600, 500);
+    b1 = new Button(this, 10, 10, 40, 40, 0, "<", [this]()
+    {
+    g->movepuck_left();
+    a1->load(g);
+    });
+    b2 = new Button(this, 50, 10, 40, 40, 0, ">", [this]()
+    {
+    g->movepuck_right();
+    a1->load(g);
+    });
+    b2 = new Button(this, 100, 10, 80, 80, 0, "GO", [this]()
+    {
+    g->savepuck();
+    g->addpuck();
+    a1->load(g);
+    if(g->check())cout << "win" << endl;
+    });
     };
 };
+
 int main()
 {
     gout.open(800,800);
     event ev;
-    GameMaster g(7,6);
-    while(gin >> ev){
-        if(ev.type == ev_key) g.drawconsole();
-        gout << refresh;
-        if(ev.keycode == 'a'){
-            g.addpuck();
-        }
-        if(ev.keycode == 'd'){
-            g.movepuck_right();
-        }
-        if(ev.keycode == 's'){
-            g.movepuck_left();
-        }
-        if(ev.keycode == 'w'){
-            g.savepuck();
-        }
-        }
     gout.load_font("LiberationSans-Regular.ttf",32,true);
     ablak a;
-    //a.event_loop();
+    a.event_loop();
     return 0;
 }
 

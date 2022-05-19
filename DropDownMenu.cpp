@@ -101,14 +101,14 @@ void DropDown::handle(event ev){
         if(ev.type == ev_mouse && ev.button==btn_wheelup){
             if(_partvec[_partvec.size()-1]._y > _y + (_lim -1)* _size_y){
             for(Part& p: _partvec){
-                p._y -=35;
+                p._y -=_size_y;
             }
             }
         }
         if(ev.type == ev_mouse && ev.button==btn_wheeldown){
             if(_partvec[0]._y < _y){
             for(Part& p: _partvec){
-                p._y +=35;
+                p._y +=_size_y;
             }
             }
     }
@@ -127,15 +127,15 @@ void DropDown::addItem(string item){
     Part p(_x, _y, _size_x, _size_y, item);
     _partvec.insert(_partvec.begin(),p);
     for(int i = 1; i < _partvec.size(); i++){
-        _partvec[i]._y +=35;
+        _partvec[i]._y +=_size_y;
     }
 }
 
 void DropDown::removeItem(){
-    if(_partvec.size() > 1){
+    if(_partvec.size() >= 1){
     _partvec.erase(_partvec.begin() + _SelectedPart);
     for(int i = _SelectedPart; i < _partvec.size(); i++){
-        _partvec[i]._y -=35;
+        _partvec[i]._y -=_size_y;
     }
     }
 }

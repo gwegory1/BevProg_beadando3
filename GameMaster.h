@@ -18,6 +18,8 @@ virtual void movepuck_right();
 virtual void movepuck_left();
 virtual void drawconsole();
 virtual void savepuck();
+virtual bool check();
+virtual vector<vector<int>> result();
 };
 
 

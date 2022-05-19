@@ -20,7 +20,8 @@ public:
     virtual void draw() ;
     virtual void handle(genv::event ev);
     virtual void set_value(int value, bool& op);
-    virtual int result();
+    virtual string result();
+    virtual void reset();
 };
 
 

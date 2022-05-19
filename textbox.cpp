@@ -6,7 +6,7 @@ using namespace genv;
 Textbox::Textbox(window *w, int x, int y, int sx, int sy) : Widget(w,x,y,sx,sy)
 {
   _checked = false;
-  _saved = "";
+  _saved = "|";
   _caps = false;
   _content = "";
 }
@@ -71,11 +71,17 @@ void Textbox::set_value(int value, bool& op){
 }
 
 
-int Textbox::result(){
+string Textbox::result(){
     string res;
     res =_content + _saved;
-    return stoi(res);
+    res = res.substr(0, res.length()-1);
+    return res;
     }
+
+void Textbox::reset(){
+    _saved = "|";
+    _content ="";
+}
 
 
 
