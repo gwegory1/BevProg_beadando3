@@ -92,7 +92,7 @@ bool GameMaster::check(){
     }
 
     for(int l =1; l < 7; l++){
-        for(int i =0; i < 3; i++){
+        for(int i =0; i < 4; i++){
             string st;
             for(int j=0; j < 4; j++){
                 st += to_string(fieldvec[i+j][l]);
