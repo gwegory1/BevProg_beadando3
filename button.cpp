@@ -25,7 +25,7 @@ void Button::draw(){
     gout << move_to(_x,_y) << color(215,215,215) << box(3,_size_y);
     gout << move_to(_x,_y) << color(215,215,215) << box(_size_x,3);
     gout << move_to(_x,_y+ _size_y - 3) << color(225,225,225) << box(_size_x,3);
-    gout << move_to(_x + _size_y/2 - 10, _y + _size_y/2 - (gout.cascent()+ gout.cdescent())/2) << color(0,0,0) << text(_dir);
+    gout << move_to(_x + _size_x/4, _y + _size_y/2 - (gout.cascent()+ gout.cdescent())/2) << color(0,0,0) << text(_dir);
     /*
     if(_dir == "right"){
         gout << move_to(_x +_size_x/2 - 5 , _y + _size_y/2 -10) << color(10,10,10);

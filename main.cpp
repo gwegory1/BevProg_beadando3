@@ -13,7 +13,7 @@
 using namespace std;
 using namespace genv;
 
-void shift();
+
 
 void clear(){
         gout << move_to(0, 0) << color(0, 0, 0) << box(800, 800) << color(255, 255, 255);
@@ -33,17 +33,17 @@ struct ablak : public window{
     ablak(){
     g = new GameMaster(7,7);
     a1   = new GameField(this, 100, 200, 600, 500);
-    b1 = new Button(this, 10, 10, 40, 40, 0, "<", [this]()
+    b1 = new Button(this, 300, 20, 40, 60, 0, "<", [this]()
     {
     g->movepuck_left();
     a1->load(g);
     });
-    b2 = new Button(this, 50, 10, 40, 40, 0, ">", [this]()
+    b2 = new Button(this, 460, 20, 40, 60, 0, ">", [this]()
     {
     g->movepuck_right();
     a1->load(g);
     });
-    b2 = new Button(this, 100, 10, 80, 80, 0, "GO", [this]()
+    b2 = new Button(this, 350, 20, 100, 60, 0, "GO", [this]()
     {
     g->savepuck();
     g->addpuck();
